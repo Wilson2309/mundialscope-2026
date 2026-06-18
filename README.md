@@ -1,227 +1,104 @@
-# 🚀 MundialScope 2026
+# BarberFlow Vercel
 
-Dashboard interactivo y adaptativo desarrollado como actividad práctica de integración de APIs externas, enfocado en el Mundial 2026.
+Versión de BarberFlow lista para desplegar en Vercel con frontend estático, Vercel Functions en Node.js y Supabase Postgres como base de datos.
 
-## 📌 Descripción del Proyecto
+## Tecnologías
 
-MundialScope 2026 es una aplicación web relacionada con el Mundial 2026. Su objetivo es permitir que el usuario consulte partidos, selecciones, grupos, resultados, datos de países participantes y clima de las ciudades sede.
+- HTML5
+- CSS3
+- JavaScript puro
+- Node.js Vercel Functions
+- Supabase
+- APIs REST
 
-Además, el proyecto plantea una sección de pronósticos y simulación para proyectar posibles resultados y un posible campeón del torneo. La aplicación busca integrar información real desde diferentes APIs, mostrando los datos de forma clara, visual y organizada.
+## APIs externas
 
-## 🎯 Objetivo del Proyecto
+- Nager.Date: feriados de Ecuador.
+- Open-Meteo: clima actual de Guayaquil.
+- QRServer: QR de confirmación de cita.
 
-El objetivo principal es demostrar el consumo e integración de múltiples APIs externas dentro de una aplicación web, aplicando buenas prácticas como:
+## Base de datos
 
-* Separación entre frontend y backend.
-* Uso de PHP para proteger claves privadas.
-* Consumo de APIs mediante peticiones HTTP.
-* Manejo de respuestas en formato JSON.
-* Organización limpia del proyecto.
-* Uso de variables de entorno para evitar exponer información sensible.
+La base de datos usa Supabase Postgres con estas tablas:
 
-## 🛠️ Tecnologías Utilizadas
+- `services`
+- `staff`
+- `appointments`
+- `appointment_services`
 
-* HTML5
-* CSS3
-* JavaScript
-* PHP puro
-* APIs REST
-* JSON
-* Variables de entorno
-* Git y GitHub
+## Configurar Supabase
 
-## 🧩 Arquitectura del Proyecto
+1. Crear un proyecto en Supabase.
+2. Abrir el SQL Editor.
+3. Ejecutar `database/schema.sql`.
+4. Copiar `SUPABASE_URL`.
+5. Copiar `SUPABASE_SERVICE_ROLE_KEY`.
 
-La aplicación estará dividida en dos partes principales:
+La `SUPABASE_SERVICE_ROLE_KEY` solo se usa en Vercel Functions. No se expone en el frontend.
 
-* **Frontend:** interfaz visual desarrollada con HTML, CSS y JavaScript.
-* **Backend:** archivos PHP encargados de comunicarse con las APIs externas y proteger la API key.
+## Configurar variables
 
-El frontend no llamará directamente a API-Sports, ya que esta API utiliza una clave privada. En su lugar, JavaScript llamará a un archivo PHP interno, y ese archivo PHP será el encargado de consultar API-Sports usando una variable de entorno.
+Crear variables de entorno en Vercel:
 
-```txt
-   [ Usuario interactúa con la interfaz ]
-                     |
-                     v
-              [ APP FRONTEND ]
-          HTML + CSS + JavaScript
-                     |
-                     v
-             [ BACKEND PHP ]
-         /          |          \
-        v           v           v
-[ API-Sports ] [ REST Countries ] [ Open-Meteo ]
+```env
+SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+OWNER_PASSWORD=admin123
+APP_USER_AGENT=BarberFlow/1.0
 ```
 
-## 🔌 APIs Utilizadas en la Aplicación
+Para local, copiar `.env.example` como `.env` y completar los valores.
 
-### 1. API-Sports / API-Football
-
-Se utilizará para obtener información relacionada con el Mundial 2026, como:
-
-* Partidos.
-* Selecciones.
-* Grupos.
-* Resultados.
-* Estadísticas.
-* Información general del torneo.
-
-Esta API requiere una clave privada, por lo que será consumida desde PHP y no directamente desde JavaScript.
-
-### 2. REST Countries API
-
-Se utilizará para mostrar datos del país de cada selección, como:
-
-* Bandera.
-* Capital.
-* Población.
-* Idioma.
-* Moneda.
-* Región.
-
-### 3. Open-Meteo API
-
-Se utilizará para mostrar el clima actual o pronosticado de la ciudad sede donde se jugará un partido, incluyendo datos como:
-
-* Temperatura.
-* Humedad.
-* Velocidad del viento.
-* Condición climática.
-
-## 📁 Estructura del Proyecto
-
-```txt
-mundialscope-2026/
-│
-├── public/
-│   ├── index.php
-│   ├── css/
-│   │   └── styles.css
-│   └── js/
-│       └── app.js
-│
-├── api/
-│   ├── partidos.php
-│   ├── pais.php
-│   └── clima.php
-│
-├── config/
-│   └── config.php
-│
-├── .env
-├── .gitignore
-└── README.md
-```
-
-## 🔐 Manejo de Variables de Entorno
-
-El archivo `.env` se utilizará para guardar claves privadas, como la API key de API-Sports.
-
-Este archivo no debe subirse a GitHub, ya que contiene información sensible.
-
-Ejemplo de variable en el archivo `.env`:
-
-```txt
-API_FOOTBALL_KEY=tu_clave_privada
-```
-
-Para evitar subir este archivo al repositorio, se agregará al archivo `.gitignore`:
-
-```txt
-.env
-```
-
-De esta forma, el proyecto puede estar en GitHub sin exponer la clave privada.
-
-## ⚙️ Funcionamiento General
-
-El frontend realizará solicitudes a los archivos PHP internos del proyecto.
-
-Ejemplo:
-
-```js
-fetch("../api/partidos.php")
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-  });
-```
-
-Luego, el archivo `partidos.php` será el encargado de consultar API-Sports usando la clave guardada en el archivo `.env`.
-
-De esta manera, la clave privada nunca aparece en el código JavaScript visible para el usuario.
-
-## 🧠 Funcionalidades Previstas
-
-* Consultar partidos del Mundial 2026.
-* Ver selecciones participantes.
-* Mostrar grupos y resultados.
-* Consultar información general de cada país.
-* Mostrar bandera, capital, idioma, moneda y población.
-* Consultar clima de la ciudad sede.
-* Realizar pronósticos básicos de partidos.
-* Simular posibles clasificados y campeón del torneo.
-* Mostrar la información en una interfaz moderna y responsive.
-
-## 💻 Configuración Local e Instalación
-
-1. Clonar el repositorio:
+## Ejecutar local
 
 ```bash
-git clone https://github.com/pinela5202/mundialscope-2026.git
+npm install
+vercel dev
 ```
 
-2. Entrar a la carpeta del proyecto:
+Abrir:
 
-```bash
-cd mundialscope-2026
+```text
+http://localhost:3000/
 ```
 
-3. Crear el archivo `.env` en la raíz del proyecto:
+## Desplegar en Vercel
 
-```txt
-API_FOOTBALL_KEY=tu_clave_privada
+1. Subir este proyecto a GitHub.
+2. Importar el repositorio en Vercel.
+3. Agregar las variables de entorno.
+4. Desplegar.
+
+## Panel del dueño
+
+El menú público no muestra Admin.
+
+Acceso manual:
+
+```text
+/admin-login.html
 ```
 
-4. Verificar que el archivo `.gitignore` incluya:
+La clave inicial es:
 
-```txt
-.env
+```text
+admin123
 ```
 
-5. Ejecutar el proyecto en un entorno local compatible con PHP, como XAMPP, Laragon o el servidor integrado de PHP.
+## Flujo de citas
 
-Ejemplo usando servidor integrado de PHP:
+- El cliente elige varios servicios.
+- Se calcula precio y duración total.
+- Se recomienda trabajador según categorías y skills.
+- Se consultan horarios disponibles con duración real.
+- Se bloquean domingos, feriados, solapamientos y citas que terminen después de las 18:00.
+- La cita se guarda en Supabase.
+- La confirmación muestra QR.
 
-```bash
-php -S localhost:8000 -t public
-```
+## Autor
 
-6. Abrir el proyecto en el navegador:
+Wilson Cristóbal Pinela León
 
-```txt
-http://localhost:8000
-```
+## Curso
 
-## 🌐 Despliegue
-
-El repositorio se subirá a GitHub para almacenar el código fuente del proyecto.
-
-Para publicar la aplicación, se debe usar un hosting compatible con PHP, ya que el proyecto utiliza archivos PHP para proteger la API key y comunicarse con API-Sports.
-
-## ✅ Buenas Prácticas Aplicadas
-
-* No exponer la API key en archivos públicos.
-* No subir el archivo `.env` a GitHub.
-* Separar frontend y backend.
-* Consumir APIs externas desde archivos PHP.
-* Usar estructura de carpetas organizada.
-* Documentar correctamente el proyecto en el README.
-* Mantener el código limpio y entendible.
-
-## 👤 Autor
-
-**Wilson Cristóbal Pinela León**
-**Curso:** 3ero Bachillerato Técnico “B”
-**Proyecto:** Laboratorio de Integración de APIs
-**Repositorio:** mundialscope-2026
+3ero Bachillerato Técnico "B"
