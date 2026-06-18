@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Agendar | BarberFlow</title><link rel="stylesheet" href="css/styles.css"></head>
+<body data-page="booking">
+<div data-header></div>
+<main>
+  <section class="page-hero narrow"><p class="eyebrow">Agenda</p><h1>Reserva tu cita</h1><p>Selecciona servicios, acepta una recomendación y confirma en un horario disponible.</p></section>
+  <section class="section booking-layout" data-booking>
+    <form class="form-card" data-booking-form>
+      <div class="booking-stepper"><button type="button" class="active" data-step-target="1"><span>1</span>Servicios</button><button type="button" data-step-target="2"><span>2</span>Trabajador</button><button type="button" data-step-target="3"><span>3</span>Horario</button><button type="button" data-step-target="4"><span>4</span>Datos</button></div>
+      <div class="progress-track"><span data-progress-bar></span></div>
+      <section class="booking-step active" data-step="1"><h2>Elige tus servicios</h2><div class="service-picker" data-service-picker><div class="skeleton"></div></div></section>
+      <section class="booking-step" data-step="2"><h2>Escoge trabajador</h2><div class="recommendation-card" data-recommendation><p>Selecciona servicios para ver una recomendación.</p></div><label>Trabajador<select name="staff_id" required data-staff-select><option value="">Cargando...</option></select></label><div class="step-summary" data-staff-preview></div></section>
+      <section class="booking-step" data-step="3"><h2>Selecciona fecha y hora</h2><div class="form-grid one"><label>Fecha<input name="appointment_date" type="date" required data-date-input></label></div><div class="field-block"><span>Horarios disponibles</span><div class="time-grid" data-time-grid></div><input type="hidden" name="start_time" required data-hour-input></div></section>
+      <section class="booking-step" data-step="4"><h2>Datos del cliente</h2><div class="form-grid"><label>Nombre completo<input name="client_name" type="text" required placeholder="Ej. Wilson Pinela"></label><label>Teléfono<input name="phone" type="tel" required placeholder="0999999999"></label><label>Email<input name="email" type="email" placeholder="cliente@email.com"></label></div></section>
+      <div class="form-actions"><button class="btn secondary" type="button" data-prev-step>Anterior</button><button class="btn primary" type="button" data-next-step>Siguiente</button><button class="btn primary hidden" type="submit" data-submit-booking>Confirmar cita</button><span class="form-note" data-booking-note>Selecciona servicios para calcular total.</span></div>
+    </form>
+    <aside class="booking-side"><div class="summary-card" data-booking-summary><strong>Resumen</strong><p>No hay servicios seleccionados.</p></div><div class="weather-card" data-weather><p>Cargando clima...</p></div><div class="info-card"><strong>Reglas</strong><p>No domingos, feriados, solapamientos ni citas que terminen después de las 18:00.</p></div></aside>
+  </section>
+</main>
+<div data-footer></div><div class="toast" data-toast></div><script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio | BarberFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="home">
+<div data-header></div>
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">Barbería premium en Guayaquil</p>
+      <h1>BarberFlow</h1>
+      <p class="hero-copy">Reserva tu corte en minutos con confirmación digital.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="agendar.html">Agendar cita</a>
+        <a class="btn secondary" href="servicios.html">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-panel premium-ticket">
+      <div class="ticket-top"><span>Horario de hoy</span><strong>09:00 - 18:00</strong></div>
+      <div class="ticket-grid">
+        <div><span>Reserva</span><strong>Rápida</strong></div>
+        <div><span>Servicios</span><strong>12 opciones</strong></div>
+        <div><span>Rating</span><strong>4.9</strong></div>
+        <div class="fake-qr" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      </div>
+      <p>Agenda real con Supabase, Vercel Functions y código QR.</p>
+    </div>
+  </section>
+  <section class="section compact">
+    <div class="stats-grid">
+      <article class="stat-card"><span>Servicios</span><strong>12</strong><p>Corte, barba, facial, manos y cabello.</p></article>
+      <article class="stat-card"><span>Trabajadores</span><strong>7</strong><p>Barberos y barberas con especialidades.</p></article>
+      <article class="stat-card"><span>Horarios</span><strong>30 min</strong><p>Turnos calculados por duración real.</p></article>
+      <article class="stat-card"><span>Citas</span><strong>QR</strong><p>Confirmación digital desde Supabase.</p></article>
+    </div>
+  </section>
+  <section class="section two-column" data-home>
+    <div>
+      <div class="section-heading"><p class="eyebrow">Clima actual</p><h2>Planifica tu visita</h2></div>
+      <div class="weather-card" data-weather><p>Cargando clima...</p></div>
+    </div>
+    <div>
+      <div class="section-heading"><p class="eyebrow">Servicios destacados</p><h2>Lo más pedido</h2></div>
+      <div class="mini-grid" data-featured-services></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-heading"><p class="eyebrow">Cómo funciona</p><h2>Agenda sin complicarte</h2></div>
+    <div class="steps-grid">
+      <article><span>01</span><strong>Elige servicios</strong><p>Combina uno o varios servicios.</p></article>
+      <article><span>02</span><strong>Recibe recomendación</strong><p>El sistema sugiere el trabajador más apto.</p></article>
+      <article><span>03</span><strong>Selecciona horario</strong><p>Solo se muestran turnos disponibles.</p></article>
+      <article><span>04</span><strong>Guarda tu QR</strong><p>Tu comprobante queda listo al confirmar.</p></article>
+    </div>
+  </section>
+</main>
+<div data-footer></div>
+<div class="toast" data-toast></div>
+<script src="js/app.js"></script>
+</body>
+</html>

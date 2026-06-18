@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Admin | BarberFlow</title><link rel="stylesheet" href="css/styles.css"></head>
+<body data-page="admin">
+<div data-header></div>
+<main><section class="page-hero narrow"><p class="eyebrow">Panel del dueño</p><h1>Dashboard de citas</h1><p>Consulta agenda, filtra y cancela citas.</p><div class="hero-actions"><button class="btn secondary" type="button" data-admin-logout>Cerrar sesión</button></div></section><section class="section" data-admin><div class="filters-row"><label>Fecha<input type="date" data-admin-date></label><label>Estado<select data-admin-status><option value="">Todos</option><option value="confirmed">Confirmadas</option><option value="cancelled">Canceladas</option></select></label><label>Trabajador<select data-admin-staff><option value="">Todos</option></select></label><button class="btn secondary" type="button" data-admin-refresh>Actualizar</button></div><div class="stats-grid small" data-admin-stats></div><div class="table-wrap"><table><thead><tr><th>Código</th><th>Cliente</th><th>Servicios</th><th>Total</th><th>Trabajador</th><th>Fecha</th><th>Inicio</th><th>Fin</th><th>Estado</th><th>Acción</th></tr></thead><tbody data-admin-rows></tbody></table></div></section></main>
+<div data-footer></div><div class="toast" data-toast></div><script src="js/app.js"></script>
+</body>
+</html>
